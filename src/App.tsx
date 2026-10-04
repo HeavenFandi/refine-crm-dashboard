@@ -12,7 +12,7 @@ import routerProvider, {
 } from "@refinedev/react-router";
 
 import { ColorModeContextProvider } from "./contexts/color-mode";
-import { dataProvider, liveProvider } from "./providers";
+import { dataProvider, liveProvider ,authProvider} from "./providers";
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
               <Refine
                 dataProvider={dataProvider}
                 liveProvider={liveProvider}
+                authProvider={authProvider}
                 notificationProvider={useNotificationProvider}
                 routerProvider={routerProvider}
                 options={{
