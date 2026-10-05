@@ -1,11 +1,11 @@
 import React from 'react'
 
-const index = () => {
+export const Home = () => {
   return (
     <div>
-      
+      Home Page
     </div>
   )
 }
 
-export default index
+

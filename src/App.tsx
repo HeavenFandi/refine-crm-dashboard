@@ -12,8 +12,8 @@ import routerProvider, {
 } from "@refinedev/react-router";
 
 import { ColorModeContextProvider } from "./contexts/color-mode";
-import { dataProvider, liveProvider ,authProvider} from "./providers";
-
+import { dataProvider, liveProvider, authProvider } from "./providers";
+import { Home, ForgotPasswordPage, LoginPage, RegisterPage } from "./pages";
 function App() {
   return (
     <BrowserRouter>
@@ -36,6 +36,11 @@ function App() {
               >
                 <Routes>
                   <Route index element={<WelcomePage />} />
+                  <Route index element={<Home />} />
+                  <Route path="login" element={<LoginPage />} />
+                  <Route path="forgot-password" element={<ForgotPasswordPage />} />
+                  <Route path="register" element={<RegisterPage />} />
+                  
                 </Routes>
 
                 <RefineKbar />
