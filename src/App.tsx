@@ -44,16 +44,20 @@ function App() {
                   />
                   <Route path="register" element={<RegisterPage />} />
                   <Route
+
                     element={
                       <Authenticated
                         key="authenticated-layout"
                         fallback={<CatchAllNavigate to="login" />}
-                      />
+                      >
+                        <Layout/> 
+                        
+                      </Authenticated>
                     }
                   >
-                    <Route element={<Layout />}>
+                 
                       <Route index element={<Home />} />
-                    </Route>
+                   
                   </Route>
                 </Routes>
 

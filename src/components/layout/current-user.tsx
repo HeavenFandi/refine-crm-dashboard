@@ -1,6 +1,7 @@
-import { Avatar, Button, Popover, Space, Typography } from "antd";
-import { LogoutOutlined, UserOutlined } from "@ant-design/icons";
+import {  Button, Popover, Space, Typography } from "antd";
+import { LogoutOutlined } from "@ant-design/icons";
 import { useGetIdentity, useLogout } from "@refinedev/core";
+import CustomAvatar from "../custom-avatar";
 
 type IUser = {
   id: string;
@@ -36,11 +37,12 @@ const CurrentUser = () => {
       overlayInnerStyle={{ padding: 0 }}
       overlayStyle={{ zIndex: 999 }}
     >
-      <Avatar
+      <CustomAvatar/>
+      {/* <Avatar
         src={user?.avatarUrl}
         icon={<UserOutlined />}
         style={{ cursor: "pointer" }}
-      />
+      /> */}
     </Popover>
   );
 };
