@@ -1,0 +1,14 @@
+﻿.env
+.env.example
+.gitignore
+.npmrc
+Dockerfile
+eslint.config.js
+index.html
+listing.txt
+package-lock.json
+package.json
+README.MD
+tsconfig.json
+tsconfig.node.json
+vite.config.ts

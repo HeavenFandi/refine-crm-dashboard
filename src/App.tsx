@@ -1,4 +1,4 @@
-import { Refine } from "@refinedev/core";
+import { Refine, Authenticated } from "@refinedev/core";
 import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import { useNotificationProvider } from "@refinedev/antd";
@@ -9,11 +9,13 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import routerProvider, {
   UnsavedChangesNotifier,
   DocumentTitleHandler,
+  CatchAllNavigate,
 } from "@refinedev/react-router";
 
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import { dataProvider, liveProvider, authProvider } from "./providers";
 import { Home, ForgotPasswordPage, LoginPage, RegisterPage } from "./pages";
+import Layout from "./components/layout";
 function App() {
   return (
     <BrowserRouter>
@@ -35,12 +37,24 @@ function App() {
                 }}
               >
                 <Routes>
-                  <Route index element={<WelcomePage />} />
-                  <Route index element={<Home />} />
                   <Route path="login" element={<LoginPage />} />
-                  <Route path="forgot-password" element={<ForgotPasswordPage />} />
+                  <Route
+                    path="forgot-password"
+                    element={<ForgotPasswordPage />}
+                  />
                   <Route path="register" element={<RegisterPage />} />
-                  
+                  <Route
+                    element={
+                      <Authenticated
+                        key="authenticated-layout"
+                        fallback={<CatchAllNavigate to="login" />}
+                      />
+                    }
+                  >
+                    <Route element={<Layout />}>
+                      <Route index element={<Home />} />
+                    </Route>
+                  </Route>
                 </Routes>
 
                 <RefineKbar />
@@ -55,7 +69,5 @@ function App() {
     </BrowserRouter>
   );
 }
-
-import { WelcomePage } from "@refinedev/core";
 
 export default App;
